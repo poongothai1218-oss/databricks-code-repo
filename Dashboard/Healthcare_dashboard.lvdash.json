@@ -1,0 +1,1192 @@
+{
+  "datasets": [
+    {
+      "name": "ee6ecfb3",
+      "displayName": "Master City List",
+      "queryLines": [
+        "SELECT * FROM master_city_list\n"
+      ],
+      "catalog": "logistics2",
+      "schema": "default"
+    },
+    {
+      "name": "55a572e6",
+      "displayName": "patients",
+      "queryLines": [
+        "SELECT count(*) FROM logistics2.default.patients\n",
+        "\n"
+      ]
+    },
+    {
+      "name": "ff8323ff",
+      "displayName": "drugs",
+      "queryLines": [
+        "SELECT * FROM logistics2.default.drug\n"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "460ca3df",
+      "displayName": "patients_view",
+      "layout": [
+        {
+          "widget": {
+            "name": "578562d3",
+            "multilineTextboxSpec": {
+              "lines": [
+                "### master city data"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "1287519e",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ee6ecfb3",
+                  "fields": [
+                    {
+                      "name": "latitude",
+                      "expression": "`latitude`"
+                    },
+                    {
+                      "name": "longitude",
+                      "expression": "`longitude`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "facet": {
+                "type": "wrap",
+                "fieldName": "latitude",
+                "scale": {
+                  "type": "categorical"
+                }
+              },
+              "version": 3,
+              "frame": {
+                "showTitle": false,
+                "showDescription": false
+              },
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "latitude",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "longitude",
+                  "scale": {
+                    "type": "quantitative",
+                    "colorRamp": {
+                      "mode": "scheme",
+                      "scheme": "redyellowblue"
+                    },
+                    "domain": {
+                      "min": 0
+                    }
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 53,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "078217bb",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ee6ecfb3",
+                  "fields": [
+                    {
+                      "name": "city_name",
+                      "expression": "`city_name`"
+                    },
+                    {
+                      "name": "latitude",
+                      "expression": "`latitude`"
+                    },
+                    {
+                      "name": "longitude",
+                      "expression": "`longitude`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "annotations": [
+                {
+                  "type": "horizontal-line",
+                  "encodings": {
+                    "y": {
+                      "dataValue": "10",
+                      "dataType": "DOUBLE"
+                    }
+                  }
+                }
+              ],
+              "widgetType": "heatmap",
+              "encodings": {
+                "x": {
+                  "fieldName": "latitude",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "longitude",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                },
+                "extra": [
+                  {
+                    "fieldName": "city_name"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 35,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "10162229",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ee6ecfb3",
+                  "fields": [
+                    {
+                      "name": "country",
+                      "expression": "`country`"
+                    },
+                    {
+                      "name": "longitude",
+                      "expression": "`longitude`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "annotations": [
+                {
+                  "type": "horizontal-line",
+                  "encodings": {
+                    "y": {
+                      "dataValue": "5",
+                      "dataType": "DOUBLE"
+                    },
+                    "label": {
+                      "value": "show"
+                    }
+                  }
+                }
+              ],
+              "widgetType": "combo",
+              "encodings": {
+                "x": {
+                  "fieldName": "country",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "primary": {
+                    "fields": [
+                      {
+                        "fieldName": "longitude"
+                      }
+                    ]
+                  },
+                  "secondary": {
+                    "fields": []
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 59,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "af7ec9f7",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ee6ecfb3",
+                  "fields": [
+                    {
+                      "name": "longitude",
+                      "expression": "`longitude`"
+                    },
+                    {
+                      "name": "min(latitude)",
+                      "expression": "MIN(`latitude`)"
+                    },
+                    {
+                      "name": "q1(latitude)",
+                      "expression": "PERCENTILE(`latitude`, 0.25)"
+                    },
+                    {
+                      "name": "median(latitude)",
+                      "expression": "MEDIAN(`latitude`)"
+                    },
+                    {
+                      "name": "q3(latitude)",
+                      "expression": "PERCENTILE(`latitude`, 0.75)"
+                    },
+                    {
+                      "name": "max(latitude)",
+                      "expression": "MAX(`latitude`)"
+                    }
+                  ],
+                  "filters": [
+                    {
+                      "expression": "`city_name` IN (`city_name`) OR TRUE"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "box",
+              "encodings": {
+                "x": {
+                  "fieldName": "longitude",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "whiskerStart": {
+                    "fieldName": "min(latitude)"
+                  },
+                  "boxStart": {
+                    "fieldName": "q1(latitude)"
+                  },
+                  "boxMid": {
+                    "fieldName": "median(latitude)"
+                  },
+                  "boxEnd": {
+                    "fieldName": "q3(latitude)"
+                  },
+                  "whiskerEnd": {
+                    "fieldName": "max(latitude)"
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 11,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "c24ca495",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ee6ecfb3",
+                  "fields": [
+                    {
+                      "name": "latitude",
+                      "expression": "`latitude`"
+                    },
+                    {
+                      "name": "sum(longitude)",
+                      "expression": "SUM(`longitude`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "waterfall",
+              "encodings": {
+                "x": {
+                  "fieldName": "latitude",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(longitude)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 23,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "83315000",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ee6ecfb3",
+                  "fields": [
+                    {
+                      "name": "sum(longitude)",
+                      "expression": "SUM(`longitude`)"
+                    },
+                    {
+                      "name": "latitude",
+                      "expression": "`latitude`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "funnel",
+              "encodings": {
+                "x": {
+                  "fieldName": "sum(longitude)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "latitude",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 41,
+            "width": 11,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "0081c611",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ee6ecfb3",
+                  "fields": [
+                    {
+                      "name": "sum(latitude)",
+                      "expression": "SUM(`latitude`)"
+                    },
+                    {
+                      "name": "latitude",
+                      "expression": "`latitude`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "selectionColor"
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "heatmap",
+              "encodings": {
+                "x": {
+                  "fieldName": "latitude",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "latitude",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "extra": [
+                  {
+                    "fieldName": "sum(latitude)"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 47,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "aa738e80",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ee6ecfb3",
+                  "fields": [
+                    {
+                      "name": "latitude",
+                      "expression": "`latitude`"
+                    },
+                    {
+                      "name": "sum(longitude)",
+                      "expression": "SUM(`longitude`)"
+                    }
+                  ],
+                  "filters": [
+                    {
+                      "expression": "IN_RANGE(`latitude`, 10D, 20D)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "widgetType": "sankey",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(longitude)"
+                },
+                "stages": [
+                  {
+                    "fieldName": "latitude"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 29,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "33cebc9c",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "55a572e6",
+                  "fields": [
+                    {
+                      "name": "gender",
+                      "expression": "`gender`"
+                    },
+                    {
+                      "name": "count(Married)",
+                      "expression": "COUNT(`Married`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "widgetType": "sankey",
+              "encodings": {
+                "value": {
+                  "fieldName": "count(Married)"
+                },
+                "stages": [
+                  {
+                    "fieldName": "gender"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 17,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "50d2f742",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "55a572e6",
+                  "fields": [
+                    {
+                      "name": "DrugCharges",
+                      "expression": "`DrugCharges`"
+                    },
+                    {
+                      "name": "drugid",
+                      "expression": "`drugid`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "scatter",
+              "encodings": {
+                "x": {
+                  "fieldName": "DrugCharges",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "drugid",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 11,
+            "width": 11,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "66fc7d2a",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ee6ecfb3",
+                  "fields": [
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    },
+                    {
+                      "name": "sum(count(1))",
+                      "expression": "SUM(`count(1)`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "area",
+              "encodings": {
+                "x": {
+                  "fieldName": "count(*)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(count(1))",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 11,
+            "height": 5
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "bcaab639",
+      "displayName": "drug_view",
+      "layout": [
+        {
+          "widget": {
+            "name": "ad0ac309",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ff8323ff",
+                  "fields": [
+                    {
+                      "name": "date",
+                      "expression": "`date`"
+                    },
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "filters": [
+                    {
+                      "expression": "IN_RANGE(`uniqueID`, NULL, NULL)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": false,
+                "showDescription": false
+              },
+              "widgetType": "histogram",
+              "encodings": {
+                "x": {
+                  "fieldName": "date",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(*)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "dd87254b",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ff8323ff",
+                  "fields": [
+                    {
+                      "name": "countdistinct(condition)",
+                      "expression": "COUNT(DISTINCT `condition`)"
+                    },
+                    {
+                      "name": "drugName",
+                      "expression": "`drugName`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "annotations": [
+                {
+                  "type": "vertical-line",
+                  "encodings": {
+                    "x": {
+                      "dataValue": "7",
+                      "dataType": "INTEGER"
+                    }
+                  }
+                }
+              ],
+              "widgetType": "area",
+              "encodings": {
+                "x": {
+                  "fieldName": "countdistinct(condition)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "drugName",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 10,
+            "width": 12,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "491c671c",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ff8323ff",
+                  "fields": [
+                    {
+                      "name": "rating",
+                      "expression": "`rating`"
+                    },
+                    {
+                      "name": "uniqueID",
+                      "expression": "`uniqueID`"
+                    },
+                    {
+                      "name": "drugName",
+                      "expression": "`drugName`"
+                    },
+                    {
+                      "name": "date",
+                      "expression": "`date`"
+                    },
+                    {
+                      "name": "usefulCount",
+                      "expression": "`usefulCount`"
+                    },
+                    {
+                      "name": "condition",
+                      "expression": "`condition`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": false
+              },
+              "headerHeight": 30,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "rating"
+                  },
+                  {
+                    "fieldName": "uniqueID"
+                  },
+                  {
+                    "fieldName": "drugName"
+                  },
+                  {
+                    "fieldName": "date"
+                  },
+                  {
+                    "fieldName": "usefulCount"
+                  },
+                  {
+                    "fieldName": "condition"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "e21ffacd",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ff8323ff",
+                  "fields": [
+                    {
+                      "name": "condition",
+                      "expression": "`condition`"
+                    },
+                    {
+                      "name": "usefulCount",
+                      "expression": "`usefulCount`"
+                    },
+                    {
+                      "name": "rating",
+                      "expression": "`rating`"
+                    },
+                    {
+                      "name": "countdistinct(condition)",
+                      "expression": "COUNT(DISTINCT `condition`)"
+                    }
+                  ],
+                  "filters": [
+                    {
+                      "expression": "`uniqueID` IN (`uniqueID`) OR TRUE"
+                    },
+                    {
+                      "expression": "IN_RANGE(`rating`, 1, 30)"
+                    },
+                    {
+                      "expression": "`drugName` IN (`drugName`) OR TRUE"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "widgetType": "sankey",
+              "encodings": {
+                "value": {
+                  "fieldName": "countdistinct(condition)"
+                },
+                "stages": [
+                  {
+                    "fieldName": "condition"
+                  },
+                  {
+                    "fieldName": "usefulCount"
+                  },
+                  {
+                    "fieldName": "rating"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 17,
+            "width": 10,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "7ea48092",
+      "displayName": "combined_view",
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "63228261",
+      "displayName": "geomap_view",
+      "layout": [
+        {
+          "widget": {
+            "name": "7a122dd4",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ee6ecfb3",
+                  "fields": [
+                    {
+                      "name": "longitude",
+                      "expression": "`longitude`"
+                    },
+                    {
+                      "name": "latitude",
+                      "expression": "`latitude`"
+                    },
+                    {
+                      "name": "city_name",
+                      "expression": "`city_name`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "symbol-map",
+              "encodings": {
+                "coordinates": {
+                  "latitude": {
+                    "fieldName": "longitude"
+                  },
+                  "longitude": {
+                    "fieldName": "latitude"
+                  }
+                },
+                "extra": [
+                  {
+                    "fieldName": "city_name"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 9
+          }
+        },
+        {
+          "widget": {
+            "name": "1142f94b",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ee6ecfb3",
+                  "fields": [
+                    {
+                      "name": "country",
+                      "expression": "`country`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "widgetType": "choropleth-map",
+              "encodings": {
+                "extra": [
+                  {
+                    "fieldName": "country"
+                  }
+                ],
+                "region": {
+                  "regionType": "mapbox-v4-admin",
+                  "admin0": {
+                    "fieldName": "country",
+                    "type": "field",
+                    "geographicRole": "admin0-name"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 9,
+            "width": 10,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}

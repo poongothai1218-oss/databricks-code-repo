@@ -1,0 +1,12 @@
+resources:
+  jobs:
+    New_Job_Feb_22_2026_at_09_55_PM:
+      name: New Job Feb 22, 2026 at 09:55 PM
+      tasks:
+        - task_key: buddle
+          notebook_task:
+            notebook_path: ../src/sample_notebook.ipynb
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
